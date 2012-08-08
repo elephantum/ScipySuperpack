@@ -47,13 +47,13 @@ else
     exit 0
 fi
 
-# hash gfortran &> /dev/null
-# if [ $? -eq 1 ]; then
+hash gfortran &> /dev/null
+if [ $? -eq 1 ]; then
 echo 'Downloading gFortran ...'
 curl -o ${GFORTRAN} http://r.research.att.com/tools/${GFORTRAN}
 echo 'Installing gFortran ...'
 ${SUDO} installer -pkg ${GFORTRAN} -target '/'
-# fi
+fi
 
 hash easy_install &> /dev/null
 if [ $? -eq 1 ]; then
