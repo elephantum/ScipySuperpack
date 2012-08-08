@@ -15,14 +15,10 @@ else
     SUDO="" #${SUDO} is not required in a virtualenv
 fi
 
-echo 'Are you installing from a repository cloned to this machine (if unsure, answer no)? (y/n)'
-read local
-if  [ "$local" == "y" ] || [ "$local" == "Y" ]; then
-    
+if [ -d .git ]; then
     SUPERPACK_PATH='.'
     
-elif [ "$local" == "n" ] || [ "$local" == "N" ]; then
-    
+else
     SUPERPACK_PATH='ScipySuperpack'
     
     hash git &> /dev/null
@@ -41,10 +37,6 @@ elif [ "$local" == "n" ] || [ "$local" == "N" ]; then
         echo 'Cloning Scipy Superpack'
         git clone git://github.com/fonnesbeck/ScipySuperpack.git
     fi
-    
-else
-    echo 'Did not recognize input. Exiting'
-    exit 0
 fi
 
 hash gfortran &> /dev/null
